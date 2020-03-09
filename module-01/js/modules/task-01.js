@@ -12,3 +12,5 @@ console.log(name, price);
 
 //https://learn.javascript.ru/modules-intro  как работает type="module"
 //https://www.youtube.com/watch?v=SH-OwSghB94  реолизация модуля
+
+console.log('===========================');

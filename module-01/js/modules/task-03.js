@@ -10,3 +10,5 @@ if (user === null) {
 } else if (ADMIN_PASSWORD !== user) {
 	alert('Доступ запрещен, неверный пароль!');
 }
+
+console.log('===========================');
