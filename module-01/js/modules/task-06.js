@@ -4,7 +4,7 @@ let total = 0;
 let value;
 
 do {
-	input = prompt(`В ведите числоыва ${total}`); //делаем запрос на число
+	input = prompt(`Сума в ведёных чисел ${total}`); //делаем запрос на число
 
 	value = Number.isNaN(Number(input)); // определяем инпут на булл и присваиваем булл щначение
 	if (input === null) {
