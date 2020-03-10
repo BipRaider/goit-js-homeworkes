@@ -12,6 +12,7 @@ if (totalPrice === null) {
 } else if (pricePerDroid * value <= credits) {
 	totalPrice = pricePerDroid * value;
 	credits -= totalPrice;
+	alert(`Вы купили ${value} дроидов, на сумму ${totalPrice} , на счету осталось ${credits} кредитов.`);
 	console.log(`Вы купили ${value} дроидов, на сумму ${totalPrice} , на счету осталось ${credits} кредитов.`);
 }
 
