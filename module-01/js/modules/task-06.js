@@ -6,16 +6,16 @@ let value;
 do {
 	input = prompt(`Сума в ведёных чисел ${total}`); //делаем запрос на число
 
-	value = Number.isNaN(Number(input)); // определяем инпут на булл и присваиваем булл щначение
+	value = Number.isNaN(Number(input)); // определяем инпут на булл и присваиваем булл значение
 	if (input === null) {
-		// если нажмут cancel
+		// если нажмут cancel выход из цыкла
 		alert(`Общая сумма чисел равна ${total}`);
 		break;
 	} else if (value === true || Number(input) === NaN) {
-		// если в вели не число
+		// если в вели не число выходи из цыкла
 		alert(`Общая сумма чисел равна ${total}`);
 		break;
 	}
 
-	total += Number(input); //  прибовляем к тотал приобразованое число
+	total += Number(input); //  прибавляем к тотал приобразованое число
 } while (value === false); // отправляем сюда инпут с булевым значением
