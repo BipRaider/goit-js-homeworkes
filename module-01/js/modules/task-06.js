@@ -11,7 +11,7 @@ do {
 		// если нажмут cancel выход из цыкла
 		alert(`Общая сумма чисел равна ${total}`);
 		break;
-	} else if (value === true || Number(input) === NaN) {
+	} else if (value === true && Number(input) === NaN) {
 		// если в вели не число выходи из цыкла
 		alert(`Общая сумма чисел равна ${total}`);
 		break;

@@ -1,0 +1,8 @@
+/* вешамем для селектора боди стиль  */
+body.dark__color {
+	background-color: black;
+}
+/* вешаюь на клас клас */
+.bot1 .bot2 {
+	color: red;
+}
