@@ -23,8 +23,8 @@ function findLongestWord(text) {
 	}
 	console.log(`Самое длинное слово (${longWord}) в нем ${value} букв`);
 }
-const text = prompt('в ведите своё предложение чтобы узнать какое слово самое длинное в нём');
-console.log(findLongestWord(text));
+// const text = prompt('в ведите своё предложение чтобы узнать какое слово самое длинное в нём');
+console.log(findLongestWord('в ведите своё предложение чтобы узнать какое слово самое длинное в нём'));
 
 console.log('end task-3 ');
 console.log('________________________________________________');
