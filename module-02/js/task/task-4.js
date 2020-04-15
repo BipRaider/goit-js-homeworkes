@@ -1,4 +1,6 @@
 'use strict';
+console.log('end task-4 ');
+
 // Напиши функцию formatString(string) которая принимает строку и форматирует ее если необходимо.
 
 // Если длина строки не превышает 40 символов, функция возвращает ее в исходном виде.
@@ -31,8 +33,10 @@ console.log(formatString('Curabitur ligula sapien, tincidunt non.'));
 console.log(formatString('Vestibulum facilisis, purus nec pulvinar iaculis.'));
 // вернется форматированная строка
 
-// console.log(formatString('Curabitur ligula sapien.'));
+console.log(formatString('Curabitur ligula sapien.'));
 // // вернется оригинальная строка
 
-// console.log(formatString('Nunc sed turpis. Curabitur a felis in nunc fringilla tristique.'));
+console.log(formatString('Nunc sed turpis. Curabitur a felis in nunc fringilla tristique.'));
 // // вернется форматированная строка
+console.log('end task-4 ');
+console.log('________________________________________________');
