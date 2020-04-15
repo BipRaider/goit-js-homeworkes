@@ -10,8 +10,8 @@ function calculateEngravingPrice(message, pricePerWord) {
 	for (let i = 0; i < message.split(' ').length; i++) {
 		element += 1;
 	}
-	console.log(`Цена за одно слово ${pricePerWord}. Количество слов в гравировке ${element}`);
-	console.log(`За ${element} слов вы заплатите ${pricePerWord * element}`);
+	return `Цена за одно слово ${pricePerWord}. Количество слов в гравировке ${element}! За ${element} слов вы заплатите ${pricePerWord *
+		element}`;
 }
 
 console.log(calculateEngravingPrice('Proin sociis natoque et magnis parturient montes sweq', 10)); // 80
