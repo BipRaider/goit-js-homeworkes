@@ -26,8 +26,9 @@ function checkForSpam1(message) {
 	const words = [ 'spam', 'sale' ]; // сделали срез  слов что надо искать
 	//  запускаем цикл перебора
 	for (const word of words) {
-		//  если елемент был найден вернёт  данное решение
+		//  делаем проверку
 		if (text.includes(word)) {
+			//  если елемент был найден вернёт  данное решение
 			return true;
 		}
 	}
