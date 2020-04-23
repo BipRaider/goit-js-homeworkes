@@ -5,6 +5,7 @@
 // заменяет значение hobby на 'skydiving'+
 // заменяет значение premium на false +
 // выводит содержимое объекта user в формате ключ:значение используя Object.keys() и for...of
+console.log('start_______________task-1');
 const user = {
 	name: 'Mango',
 	age: 20,
