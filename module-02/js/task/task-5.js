@@ -1,26 +1,32 @@
 'use strict';
 console.log('start task-5 ');
-// Напиши функцию checkForSpam(message), принимающую 1 параметр message - строку.
-//  Функция проверяет ее на содержание слов spam и sale. Если нашли зарещенное слово то функция возвращает true,
+//Напиши  функцию checkForSpam(message), принимающую 1 параметр message - строку.
+//  Функция проверяет ее на содержание слов spam и sale. Если нашли запрещённое слово то функция возвращает true,
 //   если запрещенных слов нет функция возвращает false. Слова в строке могут быть в произвольном регистре.
+const checkForSpam2 = (str) => {
+	const source = str.toLowerCase();
+	return source.includes('spam') || source.includes('sale');
+};
 
+//my
 function checkForSpam(message) {
 	const text = message.toLowerCase();
 	const spam = 'spam';
 	const sale = 'sale';
 
-	let textReturn; // переменая в которую записуеться результат
+	let textReturn; // переменная в которую запишутся результат
 	// проверка текста на наличие слов
 
 	if (text.includes(spam) || text.includes(sale)) {
 		// проверка на наличие запретных слов
-		textReturn = true; // если найдено записуеп в переменую возврата true
+		textReturn = true; // если найдено запишутся в переменную возврата true
 	} else {
-		textReturn = false; // если найдено записуеп в переменую возврата false
+		textReturn = false; // если найдено запишутся в переменную возврата false
 	}
-	return textReturn; // возврат переменой с резудьтатом
+	return textReturn; // возврат переменой с результатом
 }
 
+// my
 function checkForSpam1(message) {
 	const text = message.toLowerCase();
 	const words = [ 'spam', 'sale' ]; // сделали срез  слов что надо искать
@@ -28,13 +34,27 @@ function checkForSpam1(message) {
 	for (const word of words) {
 		//  делаем проверку
 		if (text.includes(word)) {
-			//  если елемент был найден вернёт  данное решение
+			//  если элемент был найден вернёт  данное решение
 			return true;
 		}
 	}
-	//  если нечего небыло найдено то вернет это
+	//  если нечего не было найдено то вернет это
 	return false;
 }
+//
+function setSpamWords(...spamWords) {
+	return function checkInclude(s) {
+		const arg = spamWords;
+		const string = s.toLowerCase();
+		for (let i = 0; i < arg.length; i += 1) {
+			if (string.includes(arg[i])) return true;
+		}
+		return false;
+	};
+}
+
+// А вот и нужная нам функция:
+const checkForSpam3 = setSpamWords('spam', 'sale');
 /*
  * Вызовы функции для проверки работоспособности твоей реализации.
  */

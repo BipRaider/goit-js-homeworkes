@@ -24,6 +24,10 @@ function formatString(value) {
 	return returnText.join(''); // обьеденяем обьект в одну строку с разделителем пробела . И возвращаем результат.
 }
 
+//  that on js
+const formatString = (string, stringMaxLength = 40) =>
+	string.length > stringMaxLength ? `${string.slice(0, stringMaxLength - 1)}...` : string;
+
 /*
  * Вызовы функции для проверки работоспособности твоей реализации.
  */
