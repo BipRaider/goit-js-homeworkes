@@ -1,8 +1,14 @@
 'use strict';
-// Напиши функцию countTotalSalary(employees) принимающую объект зарплат. Функция считает общую сумму запрплаты работников и возращает ее. Каждое поле объекта, передаваемого в функцию, имеет вид "имя":"зарплата".
-
-const countTotalSalary = function(employees) {
-	// твой код
+// Напиши функцию countTotalSalary(employees) принимающую объект зарплат.
+//  Функция считает общую сумму запрплаты работников и возращает ее.
+// Каждое поле объекта, передаваемого в функцию, имеет вид "имя":"зарплата".
+console.log('start_______________task-4');
+const countTotalSalary = function(object) {
+	const keys = Object.keys(object); // берем значения и з объекта
+	let value = 0; // счетчик
+	// пропускаем через цикл для перебора значений и записываем  значение в счетчик
+	for (const key of keys) value += object[key];
+	return value; // возвращаем большое значение
 };
 
 /*
@@ -25,3 +31,4 @@ console.log(
 		chelsy: 150
 	})
 ); // 400
+console.log('end_______________task-4');
