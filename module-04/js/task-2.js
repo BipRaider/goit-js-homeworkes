@@ -20,20 +20,6 @@ const invokeInventoryAction = function(itemName, action) {
 	action(itemName);
 	console.log(`Invoking action on-----------${itemName}--------------`);
 };
-// ----------------------------test 1 start-------------------------------------
-
-const invokeInventoryAction1 = (itemName, obj, action) => {
-	obj[action].bind(obj)(itemName);
-	console.log(`Invoking action on-----------${itemName}--------------`);
-};
-
-invokeInventoryAction1('test', inventory, 'add');
-console.log(inventory.items); // ['Knife', 'Medkit']
-
-invokeInventoryAction1('test', inventory, 'remove');
-console.log(inventory.items); // ['Knife', 'Medkit']
-
-// ---------------------test 1 end-------------------------------
 
 invokeInventoryAction('Gas mask', inventory.remove.bind(inventory));
 // // Invoking action on Gas mask
@@ -46,3 +32,18 @@ invokeInventoryAction('Medkit', inventory.add.bind(inventory));
 // Adding Medkit to inventory
 
 console.log(inventory.items); // ['Knife', 'Gas mask', 'Medkit']
+
+// ----------------------------test 1 start-------------------------------------
+
+const invokeInventoryAction1 = (itemName, obj = {}, action) => {
+	obj[action].bind(obj)(itemName);
+	console.log(`Invoking action on-----------${itemName}--------------`);
+};
+
+invokeInventoryAction1('test', inventory, 'add');
+console.log(inventory.items); // ['Knife', 'Medkit']
+
+invokeInventoryAction1('test', inventory, 'remove');
+console.log(inventory.items); // ['Knife', 'Medkit']
+
+// ---------------------test 1 end-------------------------------
