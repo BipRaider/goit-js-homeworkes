@@ -4,9 +4,11 @@
 
 // Добавь методы класса:
 console.log('--------------start task 3------------------');
-const Storage = function(product) {
-	this.products = product;
-};
+class Storage {
+	constructor(product) {
+		this.products = product;
+	}
+}
 
 // getItems(); //- возвращает массив текущих товаров
 const getItems = function() {
