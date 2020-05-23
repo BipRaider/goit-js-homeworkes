@@ -72,7 +72,13 @@ class Car {
 	accelerate(value) {
 		if (value <= this._maxSpeed) this._speed += value; // если максимальная скорость больше чем значение записывается скорость
 	}
-
+	accelerate1(value) {
+		if (value <= this._maxSpeed) {
+			this._speed += value;
+		} else {
+			this._speed = this._maxSpeed; // присвоили  максимальную скорость к скорости
+		}
+	}
 	/*
 	* Отнимает от свойства speed полученное значение,
 	* при условии что результирующая скорость не меньше нуля
