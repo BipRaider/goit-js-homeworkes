@@ -136,3 +136,137 @@ console.log([ 12, 54, 18, 130, 44 ].every(isBigEnough)); // true
 array.some(callback[(currentValue, index, array)]);
 console.log([ 2, 5, 8, 1, 4 ].some(isBigEnough)); // false
 console.log([ 12, 5, 8, 1, 4 ].some(isBigEnough)); // true
+
+// -----------
+//
+const peopleDate = [
+	{ name: 'Denis', age: 22, height: 167 },
+	{ name: 'Ihor', city: 'Kharkiv' },
+	{ age: 22, height: 199 },
+	{ city: 'Lviv', phone: '+38050505050' }
+];
+
+for (let i = 0; i < peopleDate.length; i++) {
+	if (peopleDate[i].name !== undefined) {
+		console.log('peopleDate[i]', peopleDate[i]); // вернёт тот массив в котором есть имя
+	}
+}
+
+const arrayName = peopleDate.forEach((obj) => {
+	if (obj.name) console.log(obj);
+});
+
+// ----------------------------
+
+const peopleDate1 = [
+	{ name: 'Denis', age: 22, height: 167 },
+	{ name: 'Ihor', city: 'Kharkiv' },
+	{ age: 22, height: 199 },
+	{ city: 'Lviv', phone: '+38050505050' }
+];
+
+// const newPeopleData = peopleData.map(({ name, city }) => ({ name, city }));
+
+const cleanPeople2 = peopleDate1.map((i, index) => {
+	// разбили на массив обьектов на обьекты по одному
+	console.log('i', i); // обьект
+	console.log('index', index); // индекс обьекта
+	console.log('Object.entries(i) =', Object.entries(i)); //разбили обьект на массив
+	const existedEntries = Object.entries(i).filter(([ key, value ]) => value); // потом разбитый массива получаем Value
+	console.log('----3----', existedEntries);
+	return { ...Object.fromEntries(existedEntries), index }; // собирает значения в обьект  и дабовляем индэкс
+}); //https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries
+console.log('--------', cleanPeople2);
+///---------------------
+// Создать новый масссив cleanPeopleData, в который положить трансформированный массив newPeopleData.
+// в нем не должно быть полей со значением undefined и должно появиться новое поле index.
+// то есть, {name: "Denis", city: undefined} должен превратиться в {name: “Denis”, index: 0}
+const worms = [
+	{ name: 'Артем', length: 15, age: 5 },
+	{ name: 'Илья', length: 10, age: 2 },
+	{ name: 'Анатолий', length: 200, age: 67 }
+];
+// Отфильтровать червяков и оставить только тех, у которых возраст меньше 20
+// Затем добавить оставшимся зубы (claws: true)
+// Или teeth: true
+const filterWorms = worms.filter((worm) => {
+	if (worm.age <= 20) {
+		let newWorms = worm;
+		newWorms.claws = true;
+		return newWorms;
+	}
+});
+console.log(filterWorms);
+
+const wormsJunior = worms.filter((worm) => worm.age < 20).map((worm) => {
+	worm.teeth = 'true';
+	return worm;
+});
+console.log(wormsJunior);
+//0-----
+const findWorm = worms.find((worm) => worm.name === 'Анатолий');
+console.log(findWorm.name);
+// ----
+const everyWorms = worms.every((worm) => worm.age >= 15);
+console.log(everyWorms);
+
+const someWorm = worms.some((worm) => worm.age >= 15);
+console.log(someWorm);
+console.log('--------------');
+const wormSone = worms
+	//.map((worm) => ({ ...worm, age: 15 })) // изменили возраст всем червякам
+	.map((worm) => (worm.age = 15)) // изменили возраст всем червякам
+	.every((worm) => worm === 15); // проверяем все ли червяки 15 лет
+
+console.log(wormSone);
+
+const te = [ 'ss', 'ss1', 'ss2', 'ss3', 'ss4' ].reduce((accum, elem) => [ ...accum, elem + ' text' ], []);
+console.log(te); //["ss", "ss1", "ss2", "ss3", "ss4"]
+
+const tePlus = [ 'ss', 'ss1', 'ss2', 'ss3', 'ss4' ].reduce((accum, elem) => [ ...accum, elem + ' www ' ], []);
+console.log(tePlus); //[('ss www ', 'ss1 www ', 'ss2 www ', 'ss3 www ', 'ss4 www ')];
+
+const re = [ { a: 2 }, { a: 2 } ].reduce((acum, elem) => [ ...acum, elem ], []);
+console.log(re); //[{…}, {…}]
+
+// -------------------------
+// сортируем по алфавиту используя сортировку по английской раскладке
+[ 'еа', 'ёж', 'ея' ].sort((a, b) => b.localeCompare(a, 'ru'));
+Array(3)[('ея', 'ёж', 'еа')][('еа', 'ёж', 'ея')].sort((a, b) => a.localeCompare(b, 'ru'));
+Array(3)[('еа', 'ёж', 'ея')].sort((a, b) => a.localeCompare(b, 'en'));
+// -----------------------
+///https://learn.javascript.ru/set-map
+[ ...new Set(array) ];
+//-==========
+const tweets = [
+	{ id: '000', likes: 5, tags: [ 'js', 'nodejs' ] },
+	{ id: '001', likes: 2, tags: [ 'html', 'css' ] },
+	{ id: '002', likes: 17, tags: [ 'html', 'js', 'nodejs' ] },
+	{ id: '003', likes: 8, tags: [ 'css', 'react' ] },
+	{ id: '004', likes: 0, tags: [ 'js', 'nodejs', 'react' ] }
+];
+const like = tweets // в вели массив который подлежит  переборке
+	.map((tweet) => tweet.likes) // выбрали те значения которые нужно записать в массив
+	.sort((a, b) => a - b) // отсортировали по возрастанию
+	.reduce((a, b) => a + b); // подсчитали
+console.log(like);
+// -----------------------------------new Set() --- https://learn.javascript.ru/set-map
+//С JavaScript 1.6/ECMAScript 5 вы можете использовать собственный метод filter массива следующим образом,
+//чтобы получить массив с уникальными значениями:
+function onlyUnique(value, index, self) {
+	return self.indexOf(value) === index;
+	//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
+}
+// usage example:
+var a = [ 'a', 1, 'a', 2, '1' ];
+var unique = a.filter(onlyUnique); // returns ['a', 1, 2, '1']
+//Если вы хотите сохранить последнее вхождение значения, просто замените indexOf на lastIndexOf.
+// С ES6 это может быть сокращено:
+// usage example:
+var myArray = [ 'a', 1, 'a', 2, '1' ];
+var unique = myArray.filter((v, i, a) => a.indexOf(v) === i);
+// unique is ['a', 1, 2, '1']
+// ES6 имеет собственный объект. Set для хранения уникальных значений. Чтобы получить массив с уникальными значениями, вы можете сделать это сейчас:
+var myArray = [ 'a', 1, 'a', 2, '1' ];
+let unique = [ ...new Set(myArray) ];
+// unique is ['a', 1, 2, '1']
