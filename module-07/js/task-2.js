@@ -1,5 +1,5 @@
 'use strict';
-
+console.log('=============task 2 start===============');
 // В HTML есть пустой список ul#ingredients.
 // В JS есть массив строк.
 
@@ -31,3 +31,4 @@ test3('#ingredients', ingredients);
 // Напиши скрипт, который для каждого элемента массива ingredients создаст отдельный li,
 //  после чего вставит все li за одну операцию в список ul.ingredients.
 //   Для создания DOM-узлов используй document.createElement().
+console.log('=============task 2 end===============');
