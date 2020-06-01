@@ -53,17 +53,47 @@ addImagInGallery('#gallery', images);
 const creadImgTest2 = (cls, { url, alt }) => `<img class="${cls}" src="${url}" alt="${alt}">`;
 //возвращаем строку с tag li в котором добавляем имя класса и tag img
 const creadLiTest2 = (addClassElem, addImag) => `<li class="${addClassElem}">${addImag}</li>`;
+
+// ============ test 2.1 ======
 //Находим класс к которому добавить ,задаём куда добавлять ,указываем массив img что надо добавить
-const addImagInGalleryTest2 = (findElem, addWhere, array) => {
-	return array.forEach((image) =>
-		document
-			.querySelector(findElem)
-			.insertAdjacentHTML(addWhere, creadLiTest2('js-gallery__box', creadImgTest2('js-img', image)))
-	);
+// const addImagInGalleryTest2 = (findElem, addWhere, array) => {
+// 	return array.forEach((image) =>
+// 		document
+// 			.querySelector(findElem)
+// 			.insertAdjacentHTML(addWhere, creadLiTest2('js-gallery__box', creadImgTest2('js-img', image)))
+// 	);
+// };
+
+// addImagInGalleryTest2('.gallery', 'beforeend', images); // внутрь element, в самый конец контента
+// addImagInGalleryTest2('.gallery', 'afterend', images); //после element
+// addImagInGalleryTest2('.gallery', 'beforebegin', images); //перед element
+// addImagInGalleryTest2('.gallery', 'afterbegin', images); //внутрь element, в самое начало контента
+// =====================test 2.2======
+
+// const addImagInGalleryTest3 = (findElem, addWhere, array) => {
+// 	return array.map((image) =>
+// 		document
+// 			.querySelector(findElem)
+// 			.insertAdjacentHTML(addWhere, creadLiTest2('js-gallery__box', creadImgTest2('js-img', image)))
+// 	);
+// };
+// =====================test 2.3======
+
+const addImagInGalleryTest3 = (findElem, addWhere, array) => {
+	// собрали отдельно а потом добавили всё в разметку(как я понял ,для оптимизаций так надо делать или как-то так)
+	let text = array.map((image) => creadLiTest2('js-gallery__box', creadImgTest2('js-img', image)));
+	// нашли нужный  id class и к нему добавляем шаблоны собранный ранние
+	return document.querySelector(findElem).insertAdjacentHTML(addWhere, text);
 };
 
-addImagInGalleryTest2('.gallery', 'beforeend', images); // внутрь element, в самый конец контента
-addImagInGalleryTest2('.gallery', 'afterend', images); //после element
-addImagInGalleryTest2('.gallery', 'beforebegin', images); //перед element
-addImagInGalleryTest2('.gallery', 'afterbegin', images); //внутрь element, в самое начало контента
-// ===========================
+addImagInGalleryTest3('.gallery', 'beforeend', images); // внутрь element, в самый конец контента
+addImagInGalleryTest3('.gallery', 'afterend', images); //после element
+addImagInGalleryTest3('.gallery', 'beforebegin', images); //перед element
+addImagInGalleryTest3('.gallery', 'afterbegin', images); //внутрь element, в самое начало контента
+
+//У этого метода есть братья-близнецы. Их синтаксис,
+//  за исключением последнего параметра, полностью совпадает с insertAdjacentHTML.
+//   Вместе они образуют универсальный швейцарский нож для вставки чего угодно куда угодно.
+
+// elem.insertAdjacentElement(position, elem) — вставляет в произвольное место не HTML-строку, а элемент elem.
+// elem.insertAdjacentText(position, text) — создаёт текстовый узел из строки text и вставляет его в указанное место относительно elem.
