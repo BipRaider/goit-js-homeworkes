@@ -81,7 +81,8 @@ const creadLiTest2 = (addClassElem, addImag) => `<li class="${addClassElem}">${a
 
 const addImagInGalleryTest3 = (findElem, addWhere, array) => {
 	// собрали отдельно а потом добавили всё в разметку(как я понял ,для оптимизаций так надо делать или как-то так)
-	let text = array.map((image) => creadLiTest2('js-gallery__box', creadImgTest2('js-img', image)));
+	// Делаем массив данных чрез map , потом через join('')  преобразуем в строку
+	let text = array.map((image) => creadLiTest2('js-gallery__box', creadImgTest2('js-img', image))).join('');
 	// нашли нужный  id class и к нему добавляем шаблоны собранный ранние
 	return document.querySelector(findElem).insertAdjacentHTML(addWhere, text);
 };

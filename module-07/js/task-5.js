@@ -10,10 +10,12 @@
 const textInInput = document.querySelector('#name-input');
 const textInspan = document.querySelector('#name-output');
 
-textInInput.addEventListener('keyup', () => addText(textInspan, textInInput));
 const addText = (startText, changeText) => {
 	if (!changeText.value && startText.value === undefined) return (startText.textContent = 'Незнакомец');
-	return (startText.textContent = changeText.value);
+	startText.textContent = changeText.value;
 };
+
+textInInput.addEventListener('keyup', () => addText(textInspan, textInInput));
+
 //https://developer.mozilla.org/ru/docs/Web/Events
 //https://www.w3schools.com/jsref/dom_obj_event.asp

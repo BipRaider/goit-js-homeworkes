@@ -1,28 +1,26 @@
 'use strict';
-// Напиши скрипт,
-//  который бы при потере фокуса на инпуте,
-//  проверял его содержимое на правильное количество символов.
 
-{
-	/* <input
-  type="text"
-  id="validation-input"
-  data-length="6"
-  placeholder="Введи 6 символов"
-/> */
-}
-// Сколько символов должно быть в инпуте, указывается в его атрибуте data-length.
-// Если введено подходящее количество, то border инпута становится зеленым, если неправильное - красным.
 // Для добавления стилей, используй CSS-классы valid и invalid.
+//====================Start================
+// Нашли элемент
+const inputEvent = document.querySelector('#validation-input');
+//====================test 1 ================
+// Повесил прослушку
+// inputEvent.addEventListener('keyup', (keyup) => even(keyup));
 
-// #validation-input {
-//   border: 3px solid #bdbdbd;
+// function even(keyup) {
+// 	if (keyup.target.dataset.length <= keyup.target.value.length) {
+// 		return (keyup.target.style.backgroundColor = 'green');
+// 	}
+// 	keyup.target.style.backgroundColor = 'red';
 // }
+// =======================test 2 ================
+// Повесил прослушку
+inputEvent.addEventListener('keyup', (keyup) => even1(keyup, inputEvent));
 
-// #validation-input.valid {
-//   border-color: #4caf50;
-// }
-
-// #validation-input.invalid {
-//   border-color: #f44336;
-// }
+function even1(keyup, elem) {
+	elem.classList.add('invalid');
+	if (keyup.target.dataset.length <= keyup.target.value.length) {
+		return elem.classList.replace('invalid', 'valid');
+	}
+}

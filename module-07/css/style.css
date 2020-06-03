@@ -29,3 +29,51 @@
 #validation-input.invalid {
 	border-color: #f44336;
 }
+
+#textTask7 {
+	font-size: 40px;
+}
+/* task 7 test 3*/
+.scrolling {
+	width: 200px;
+	height: 15px;
+	overflow: scroll;
+}
+.scrolling > div {
+	width: 283px;
+	height: 15px;
+}
+.scroll_img {
+	height: 100px;
+	width: auto;
+	opacity: 0;
+}
+/* task 7 test 4 */
+body {
+	background: #b0bbbf;
+}
+
+/* .wrapper {
+	background: #fefae0;
+	box-shadow: 0 0 60px -10px rgba(0, 0, 0, 0.2);
+	margin: 30px auto;
+	max-width: 1000px;
+	width: 100%;
+	height: 50vh;
+	position: relative;
+}
+.wrapper .window-size {
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 10px;
+}
+
+.slider-block {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+} */
