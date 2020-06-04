@@ -53,4 +53,4 @@ console.log('=============6===============');
 headItems.forEach((item) =>
 	console.log(item.firstElementChild.textContent, item.firstElementChild.nextElementSibling.children.length)
 );
-console.log('============end================');
+console.log('============task 1 end================');

@@ -32,22 +32,35 @@ decrement.addEventListener('click', () => decrement1(counterValue));
 //https://developer.mozilla.org/ru/docs/Web/API/Element/closest
 //https://developer.mozilla.org/ru/docs/Web/API/Event/target
 
-const increment2 = (document.querySelector('button[data-action="increment1"]').onclick = () => {
-	let cnt = document.querySelector('#value1');
-	cnt.innerText = parseInt(cnt.innerText, 10) + 1;
-});
+// const increment2 = (document.querySelector('button[data-action="increment1"]').onclick = () => {
+// 	let cnt = document.querySelector('#value1');
+// 	cnt.innerText = parseInt(cnt.innerText, 10) + 1;
+// });
 
-const decrement2 = (document.querySelector('button[data-action="decrement1"]').onclick = () => {
-	let cnt = document.querySelector('#value1');
-	cnt.innerText = parseInt(cnt.innerText, 10) - 1;
-});
+// const decrement2 = (document.querySelector('button[data-action="decrement1"]').onclick = () => {
+// 	let cnt = document.querySelector('#value1');
+// 	cnt.innerText = parseInt(cnt.innerText, 10) - 1;
+// });
 // ====================test 3 =============
-const cnt = document.querySelector('#value1');
-const increment3 = (cnt) => (cnt.innerText = parseInt(cnt.innerText, 10) + 1);
-const decrement3 = (cnt) => (cnt.innerText = parseInt(cnt.innerText, 10) - 1);
-document.querySelector('button[data-action="increment1"]').onclick = () => increment3(cnt);
-document.querySelector('button[data-action="decrement1"]').onclick = () => decrement3(cnt);
+// const cnt = document.querySelector('#value1');
+
+// const increment3 = (cnt) => (cnt.innerText = parseInt(cnt.innerText, 10) + 1);
+// const decrement3 = (cnt) => (cnt.innerText = parseInt(cnt.innerText, 10) - 1);
+
+// document.querySelector('button[data-action="increment1"]').onclick = () => increment3(cnt);
+// document.querySelector('button[data-action="decrement1"]').onclick = () => decrement3(cnt);
 //https://ru.stackoverflow.com/questions/630324/%D0%A1%D1%87%D1%91%D1%82%D1%87%D0%B8%D0%BA-%D0%BA%D0%BB%D0%B8%D0%BA%D0%BE%D0%B2-%D0%B4%D0%BB%D1%8F-%D1%80%D0%B0%D0%B7%D0%BD%D1%8B%D1%85-%D0%B1%D0%BB%D0%BE%D0%BA%D0%BE%D0%B2-%D1%87%D0%B5%D1%80%D0%B5%D0%B7-%D0%B4%D0%B5%D0%BB%D0%B5%D0%B3%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-js
+// ====================test 4 =============
+const buttonIncrem = document.querySelector('button[data-action="increment1"]');
+const buttonDecrem = document.querySelector('button[data-action="decrement1"]');
+const cnt = document.querySelector('#value1');
+
+const increment4 = (cnt) => (cnt.innerText = parseInt(cnt.innerText, 10) + 1);
+const decrement4 = (cnt) => (cnt.innerText = parseInt(cnt.innerText, 10) - 1);
+
+buttonIncrem.onclick = () => increment4(cnt);
+buttonDecrem.onclick = () => decrement4(cnt);
+
 ///================= react
 
 // const refs = {

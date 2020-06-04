@@ -5,7 +5,21 @@ console.log('=============task 2 start===============');
 // В JS есть массив строк.
 
 const ingredients = [ 'Картошка', 'Грибы', 'Чеснок', 'Помидоры', 'Зелень', 'Приправы' ];
+//========test 5
+const idIngred = document.querySelector('#ingredients');
 
+function test4(elem, array) {
+	//создали и собрали массив тэгов
+	const creadLi = (text) => {
+		let li = document.createElement('li');
+		li.textContent = text;
+		return li;
+	};
+	let returnLi = array.map((text, i) => (i = creadLi(text)));
+	elem.append(...returnLi);
+}
+
+test4(idIngred, ingredients);
 // ================================test 1======================
 // ingredients.forEach((text, i) => {
 // 	const idIns = document.querySelector('#ingredients'); // нашли элемент с id в html
@@ -31,17 +45,18 @@ const ingredients = [ 'Картошка', 'Грибы', 'Чеснок', 'Пом�
 // }
 // test3('#ingredients', ingredients);
 //========test 4
-function test4(elem, array) {
-	//создали и собрали массив тэгов
-	const creadLi = (text) => {
-		let li = document.createElement('li');
-		li.textContent = text;
-		return li;
-	};
-	let returnLi = array.map((text, i) => (i = creadLi(text)));
 
-	document.querySelector(elem).append(...returnLi);
-}
+// function test4(elem, array) {
+// 	//создали и собрали массив тэгов
+// 	const creadLi = (text) => {
+// 		let li = document.createElement('li');
+// 		li.textContent = text;
+// 		return li;
+// 	};
+// 	let returnLi = array.map((text, i) => (i = creadLi(text)));
+
+// 	document.querySelector(elem).append(...returnLi);
+// }
 
 // task-2.js Обращение к DOM внутри цикла - плохое решениие.
 //  Приритет в работе с DOM это минимизаций обращений к
@@ -49,8 +64,7 @@ function test4(elem, array) {
 //    чтобы добавить массив элементов за одно обращение.
 // //     Обратите внимание на прием
 // parent.append(...items)
-test4('#ingredients', ingredients);
+// test4('#ingredients', ingredients);
 // Напиши скрипт, который для каждого элемента массива ingredients создаст отдельный li,
 //  после чего вставит все li за одну операцию в список ul.ingredients.
 //   Для создания DOM-узлов используй document.createElement().
-console.log('=============task 2 end===============');

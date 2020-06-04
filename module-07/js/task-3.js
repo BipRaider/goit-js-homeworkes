@@ -23,36 +23,36 @@ const images = [
 		alt: 'Group of Horses Running'
 	}
 ];
-// =============test 1 =================
-function addImagInGallery(elem, array) {
-	return array.forEach((image) =>
-		document.querySelector(elem).append(creadLi('js-gallery__box', creadImg('js-img', image)))
-	);
-}
-//Создали img с нужными атрибутами которые содержаться в массиве данных
-const creadImg = (cls, { url, alt }) => {
-	const img = document.createElement('img');
-	img.src = url;
-	img.alt = alt;
-	img.classList.add(cls);
-	return img;
-};
+// // =============test 1 =================
+// function addImagInGallery(elem, array) {
+// 	return array.forEach((image) =>
+// 		document.querySelector(elem).append(creadLi('js-gallery__box', creadImg('js-img', image)))
+// 	);
+// }
+// //Создали img с нужными атрибутами которые содержаться в массиве данных
+// const creadImg = (cls, { url, alt }) => {
+// 	const img = document.createElement('img');
+// 	img.src = url;
+// 	img.alt = alt;
+// 	img.classList.add(cls);
+// 	return img;
+// };
 
-//Создали li  с нужным классом и adding  в него img
-const creadLi = (addClassElem, addImag) => {
-	const liBox = document.createElement('li');
-	liBox.classList.add(addClassElem);
-	liBox.append(addImag);
-	return liBox;
-};
+// //Создали li  с нужным классом и adding  в него img
+// const creadLi = (addClassElem, addImag) => {
+// 	const liBox = document.createElement('li');
+// 	liBox.classList.add(addClassElem);
+// 	liBox.append(addImag);
+// 	return liBox;
+// };
 
-addImagInGallery('#gallery', images);
+// addImagInGallery('#gallery', images);
 
 // =============test 2 =================
-//возвращаем строку с tag img  в котором добавляем имя класса и из массива добавляем два атрибута с их значениями
-const creadImgTest2 = (cls, { url, alt }) => `<img class="${cls}" src="${url}" alt="${alt}">`;
-//возвращаем строку с tag li в котором добавляем имя класса и tag img
-const creadLiTest2 = (addClassElem, addImag) => `<li class="${addClassElem}">${addImag}</li>`;
+// //возвращаем строку с tag img  в котором добавляем имя класса и из массива добавляем два атрибута с их значениями
+// const creadImgTest2 = (cls, { url, alt }) => `<img class="${cls}" src="${url}" alt="${alt}">`;
+// //возвращаем строку с tag li в котором добавляем имя класса и tag img
+// const creadLiTest2 = (addClassElem, addImag) => `<li class="${addClassElem}">${addImag}</li>`;
 
 // ============ test 2.1 ======
 //Находим класс к которому добавить ,задаём куда добавлять ,указываем массив img что надо добавить
@@ -79,19 +79,36 @@ const creadLiTest2 = (addClassElem, addImag) => `<li class="${addClassElem}">${a
 // };
 // =====================test 2.3======
 
+// const addImagInGalleryTest3 = (findElem, addWhere, array) => {
+// 	// собрали отдельно а потом добавили всё в разметку(как я понял ,для оптимизаций так надо делать или как-то так)
+// 	// Делаем массив данных чрез map , потом через join('')  преобразуем в строку
+// 	let text = array.map((image) => creadLiTest2('js-gallery__box', creadImgTest2('js-img', image))).join('');
+// 	// нашли нужный  id class и к нему добавляем шаблоны собранный ранние
+// 	return document.querySelector(findElem).insertAdjacentHTML(addWhere, text);
+// };
+
+// addImagInGalleryTest3('.gallery', 'beforeend', images); // внутрь element, в самый конец контента
+// addImagInGalleryTest3('.gallery', 'afterend', images); //после element
+// addImagInGalleryTest3('.gallery', 'beforebegin', images); //перед element
+// addImagInGalleryTest3('.gallery', 'afterbegin', images); //внутрь element, в самое начало контента
+// =====================test 2.4======
+const idGallery = document.querySelector('.gallery');
+
+const creadLiTest2 = (addClassElem, addImag) => `<li class="${addClassElem}">${addImag}</li>`;
+const creadImgTest2 = (cls, { url, alt }) => `<img class="${cls}" src="${url}" alt="${alt}">`;
+
 const addImagInGalleryTest3 = (findElem, addWhere, array) => {
 	// собрали отдельно а потом добавили всё в разметку(как я понял ,для оптимизаций так надо делать или как-то так)
 	// Делаем массив данных чрез map , потом через join('')  преобразуем в строку
 	let text = array.map((image) => creadLiTest2('js-gallery__box', creadImgTest2('js-img', image))).join('');
 	// нашли нужный  id class и к нему добавляем шаблоны собранный ранние
-	return document.querySelector(findElem).insertAdjacentHTML(addWhere, text);
+	findElem.insertAdjacentHTML(addWhere, text);
 };
 
-addImagInGalleryTest3('.gallery', 'beforeend', images); // внутрь element, в самый конец контента
-addImagInGalleryTest3('.gallery', 'afterend', images); //после element
-addImagInGalleryTest3('.gallery', 'beforebegin', images); //перед element
-addImagInGalleryTest3('.gallery', 'afterbegin', images); //внутрь element, в самое начало контента
-
+addImagInGalleryTest3(idGallery, 'beforeend', images); // внутрь element, в самый конец контента
+addImagInGalleryTest3(idGallery, 'afterend', images); //после element
+addImagInGalleryTest3(idGallery, 'beforebegin', images); //перед element
+addImagInGalleryTest3(idGallery, 'afterbegin', images); //внутрь element, в самое начало контента
 //У этого метода есть братья-близнецы. Их синтаксис,
 //  за исключением последнего параметра, полностью совпадает с insertAdjacentHTML.
 //   Вместе они образуют универсальный швейцарский нож для вставки чего угодно куда угодно.

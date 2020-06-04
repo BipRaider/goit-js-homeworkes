@@ -6,6 +6,7 @@ const textInSpan = document.querySelector('#textTask7');
 inputEvent1.addEventListener('input', (keyup) => even1(keyup, textInSpan)); //при передвижении ползунка сразу меняются значения
 
 function even1(keyup, elem) {
+	//`${keyup.target.value}px`
 	elem.style.fontSize = keyup.target.value + 'px';
 }
 //inputEvent1.addEventListener('change', (keyup) => even1(keyup, textInSpan));// при измене
