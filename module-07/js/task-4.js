@@ -21,8 +21,10 @@ const counterValue = document.querySelector('#value');
 const increment = document.querySelector('button[data-action="increment"]');
 const decrement = document.querySelector('button[data-action="decrement"]');
 
-const increment1 = (counterValue) => (counterValue.textContent = Number.parseInt(counterValue.textContent) + 1);
-const decrement1 = (counterValue) => (counterValue.textContent = Number.parseInt(counterValue.textContent) - 1);
+const increment1 = counterValue =>
+  (counterValue.textContent = Number.parseInt(counterValue.textContent) + 1);
+const decrement1 = counterValue =>
+  (counterValue.textContent = Number.parseInt(counterValue.textContent) - 1);
 
 increment.addEventListener('click', () => increment1(counterValue));
 decrement.addEventListener('click', () => decrement1(counterValue));
@@ -55,8 +57,8 @@ const buttonIncrem = document.querySelector('button[data-action="increment1"]');
 const buttonDecrem = document.querySelector('button[data-action="decrement1"]');
 const cnt = document.querySelector('#value1');
 
-const increment4 = (cnt) => (cnt.innerText = parseInt(cnt.innerText, 10) + 1);
-const decrement4 = (cnt) => (cnt.innerText = parseInt(cnt.innerText, 10) - 1);
+const increment4 = cnt => (cnt.innerText = parseInt(cnt.innerText, 10) + 1);
+const decrement4 = cnt => (cnt.innerText = parseInt(cnt.innerText, 10) - 1);
 
 buttonIncrem.onclick = () => increment4(cnt);
 buttonDecrem.onclick = () => decrement4(cnt);
@@ -86,3 +88,4 @@ buttonDecrem.onclick = () => decrement4(cnt);
 // };
 
 // refs.counter.addEventListener('click', changeValue);
+///==================================================

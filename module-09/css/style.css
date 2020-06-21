@@ -1,0 +1,29 @@
+.nav {
+	display: flex;
+	position: fixed;
+	justify-content: center;
+	flex-direction: column;
+	left: 1%;
+}
+.class-nav {
+	display: inline-block;
+	font-size: 2em;
+	line-height: 2;
+	text-decoration: none;
+	text-align: center;
+	width: 200px;
+	border: 1px solid black;
+	margin: 5px;
+}
+
+.box-section {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+section {
+	border: 2px solid black;
+	margin: 5px auto;
+	padding: 10px;
+}
