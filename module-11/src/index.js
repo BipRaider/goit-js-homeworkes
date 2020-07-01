@@ -21,8 +21,8 @@ const refs = {
   spanDH: document.querySelector('span[data-value="hours"]'),
   spanDM: document.querySelector('span[data-value="mins"]'),
   spanDS: document.querySelector('span[data-value="secs"]'),
-  fallTime: '07, 17, 2020 ',
-  // fallTime: '2017, 6, 14, 7, 40, 0, 1'
+
+  fallTime: '09, 01 , 2020 03:19:00',
 };
 
 new clockTimer(refs);

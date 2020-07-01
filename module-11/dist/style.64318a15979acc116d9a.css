@@ -1,0 +1,42 @@
+.timer-m11 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  background-color: black;
+  margin: 0 auto; }
+
+.clockface {
+  color: #ffffff;
+  font-size: 2em; }
+
+.tiner-btn {
+  width: 100px;
+  color: #ffffff;
+  background-color: black;
+  border: 1px solid white;
+  height: 50px;
+  margin-bottom: 5px; }
+
+#timer-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  height: 100px;
+  margin: 0 auto; }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 25%;
+  margin: 2px;
+  height: 70%;
+  border: 1px solid black; }
+
+.field span {
+  font-size: 1.5em; }
+
