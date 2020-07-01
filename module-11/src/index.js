@@ -22,7 +22,7 @@ const refs = {
   spanDM: document.querySelector('span[data-value="mins"]'),
   spanDS: document.querySelector('span[data-value="secs"]'),
 
-  fallTime: '09, 01 , 2020 03:19:00',
+  fallTime: '09, 01 , 2020 00:00:00',
 };
 
 new clockTimer(refs);
