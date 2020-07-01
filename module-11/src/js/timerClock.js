@@ -1,71 +1,75 @@
 'use strict';
 
 export default class MyTimer {
-	constructor({ fallTime, clock, btnStart, btnStop, downData }) {
-		this.elem = clock;
-		this.downData = downData;
-		this.btnStart = btnStart;
-		this.btnStop = btnStop;
-		this.startTimesFall = fallTime;
-		this.isAction = false;
+  constructor({ fallTime, clock, btnStart, btnStop, downData }) {
+    this.elem = clock;
+    this.downData = downData;
+    this.btnStart = btnStart;
+    this.btnStop = btnStop;
+    this.startTimesFall = fallTime;
+    this.isAction = false;
 
-		this.eventlist();
-		this.downStart();
-	}
+    this.eventlist();
+    this.downStart();
+  }
 
-	start() {
-		if (this.isAction) return;
-		this.isAction = true;
-		this.startTime = Date.now();
-		this.timerID = setInterval(() => {
-			this.curentTime = Date.now();
-			this.deltaTime = this.curentTime - this.startTime;
+  start() {
+    if (this.isAction) return;
+    this.isAction = true;
+    this.startTime = Date.now();
+    this.timerID = setInterval(() => {
+      this.curentTime = Date.now();
+      this.deltaTime = this.curentTime - this.startTime;
 
-			this.updateClock(this.deltaTime);
-		}, 1000);
-	}
+      this.updateClock(this.deltaTime);
+    }, 1000);
+  }
 
-	stop() {
-		this.isAction = false;
-		clearInterval(this.timerID);
-		this.deltaTime = 0;
-		this.updateClock(this.deltaTime);
-	}
+  stop() {
+    this.isAction = false;
+    clearInterval(this.timerID);
+    this.deltaTime = 0;
+    this.updateClock(this.deltaTime);
+  }
 
-	updateClock(dataTime) {
-		this.data = new Date(dataTime);
-		this.hours = this.pad(this.data.getUTCHours());
-		this.mins = this.pad(this.data.getMinutes());
-		this.secs = this.pad(this.data.getSeconds());
-		this.elem.textContent = `${this.hours}:${this.mins}:${this.secs}`;
-	}
+  updateClock(dataTime) {
+    this.data = new Date(dataTime);
+    this.hours = this.pad(this.data.getUTCHours());
+    this.mins = this.pad(this.data.getMinutes());
+    this.secs = this.pad(this.data.getSeconds());
+    this.elem.textContent = `${this.hours}:${this.mins}:${this.secs}`;
+  }
 
-	pad(val) {
-		//.padEnd(maxLength, fillString)
-		return String(val).padStart(2, '0');
-	}
-	eventlist() {
-		this.btnStart.addEventListener('click', () => this.start());
-		this.btnStop.addEventListener('click', () => this.stop());
-	}
+  pad(val) {
+    //.padEnd(maxLength, fillString)
+    return String(val).padStart(2, '0');
+  }
+  eventlist() {
+    this.btnStart.addEventListener('click', () => this.start());
+    this.btnStop.addEventListener('click', () => this.stop());
+  }
 
-	downStart() {
-		this.downStartTime = new Date(this.startTimesFall);
+  downStart() {
+    this.downStartTime = new Date(this.startTimesFall);
 
-		this.downTimerID = setInterval(() => {
-			this.downCurentTime = Date.now();
-			this.downDeltaTime = this.downStartTime.setUTCHours(0, 0, 0, 0) - this.downCurentTime;
-			this.downdataClokc(this.downDeltaTime);
-		}, 1000);
-	}
+    this.downTimerID = setInterval(() => {
+      this.downCurentTime = Date.now();
+      this.downDeltaTime = this.downStartTime - this.downCurentTime;
+      this.downdataClokc(this.downDeltaTime);
+    }, 1000);
+  }
 
-	downdataClokc(time) {
-		this.daysDown = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)));
-		this.hoursDown = this.pad(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-		this.minsDown = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
-		this.secsDown = this.pad(Math.floor((time % (1000 * 60)) / 1000));
-		this.downData.textContent = `${this.daysDown}:${this.hoursDown}:${this.minsDown}:${this.secsDown}`;
-	}
+  downdataClokc(time) {
+    this.daysDown = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)));
+    this.hoursDown = this.pad(
+      Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+    );
+    this.minsDown = this.pad(
+      Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)),
+    );
+    this.secsDown = this.pad(Math.floor((time % (1000 * 60)) / 1000));
+    this.downData.textContent = `${this.daysDown}:${this.hoursDown}:${this.minsDown}:${this.secsDown}`;
+  }
 }
 
 // /*
@@ -93,7 +97,9 @@ export default class MyTimer {
 //  */
 // const secs = Math.floor((time % (1000 * 60)) / 1000);
 
-console.log('---------------------------------start test timer clock----------------------------');
+console.log(
+  '---------------------------------start test timer clock----------------------------',
+);
 // let data = new Date();
 // const options = {
 // 	hour: '2-digit',
@@ -116,4 +122,6 @@ console.log('---------------------------------start test timer clock------------
 
 // 	rafs.clock.textContent = MyTimer.start.bind(MyTimer);
 // });
-console.log('---------------------------------stop test timer clock----------------------------');
+console.log(
+  '---------------------------------stop test timer clock----------------------------',
+);
