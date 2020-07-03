@@ -16,18 +16,21 @@ export default class ColorTimer {
 		this.isAction = true;
 
 		this.timerID = setInterval(() => {
-			this._elem.bgColor = this._colors[this.randomIntegerFromInterval(0, this._colors.length)];
+			// this._elem.bgColor = this._colors[this.randomIntegerFromInterval(0, this._colors.length)];
+			this._elem.style.backgroundColor = this._colors[this.randomIntegerFromInterval(0, this._colors.length)];
+			console.log(this._elem.style.backgroundColor);
 		}, 1000);
 	}
 
 	stop() {
 		this.isAction = false;
 		clearTimeout(this.timerID);
-		this._elem.bgColor = 'FFFFFF';
+		this._elem.style.backgroundColor = '#FFFFFF';
+		// this._elem.bgColor = '#FFFFFF'; // исправил
 	}
 
 	eventlist() {
-		this.btnStart.addEventListener('click', () => this.start());
+		this.btnStart.addEventListener('click', () => this.start()); //this.btnStart.addEventListener('click', this.start()) -так не работает
 		this.btnStop.addEventListener('click', () => this.stop());
 	}
 

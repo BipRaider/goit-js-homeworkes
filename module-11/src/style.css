@@ -1,6 +1,107 @@
-div {
-  color: red;
+/*
+Theme Name: Mrcoffee Child
+Theme URI: https://mrcoffee.just-themes.com/
+Template: mrcoffee
+Author: Just-themes
+Author URI: https://just-themes.com/
+Description: Mr Coffee – is an stylish WordPress Theme created specially for coffee markets, online coffee stores, cake and desserts stores, tea markets, coffee shops and other.
+Tags: food-and-drink,e-commerce,blog,full-width-template,theme-options,one-column,two-columns,left-sidebar,right-sidebar,custom-logo
+Version: 1.5.3.1590486711
+Updated: 2020-05-26 12:51:51
+
+*/
+/* В body  изменяем цвет фона заместь ffffff-_это белый цкет_ --пишем нужный цвет фона*/
+body {
+	background: #ffffff !important;
 }
-.menu-item {
-  color: yellow;
+opera:-o-prefocus body {
+	background: #ffffff !important;
 }
+#woocommerce_product_categories-1 .cat-item .children li {
+	margin-left: 15px;
+	margin-top: 5px;
+}
+/*мобильной версия */
+@media (max-width: 575.98px) {
+	.woocommerce .product-list .product-list-item {
+		margin: 0px;
+	}
+	.product-list .product-list-row .col-xs-4 {
+		width: 32%;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+}
+
+@media only screen and (min-width: 323px) and (max-width: 767px) {
+	.woocommerce .product-list .product-list-item {
+		margin: 0px;
+	}
+	.product-list .product-list-row .col-xs-4 {
+		width: 32%;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.page-head {
+		height: auto;
+	}
+
+	.page-head h1 {
+		color: #b89d64;
+		word-wrap: break-word;
+		font-size: 2em !important;
+	}
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3),
+	only screen and (-o-min-device-pixel-ratio: 3/1),
+	only screen and (min-device-pixel-ratio: 3),
+	only screen and (-webkit-min-device-pixel-ratio: 4),
+	only screen and (-o-min-device-pixel-ratio: 4/1),
+	only screen and (min-resolution: 384dpi),
+	only screen and (-webkit-min-device-pixel-ratio: 3),
+	only screen and (-o-min-device-pixel-ratio: 3/1),
+	only screen and (min-resolution: 3dppx) {
+	.woocommerce .product-list .product-list-item {
+		margin: 0px;
+	}
+	.product-list .product-list-row .col-xs-4 {
+		width: 32%;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.page-head {
+		height: auto;
+	}
+
+	.page-head h1 {
+		color: #b89d64;
+		font-size: 2em !important;
+	}
+	/* Retina styles here */
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (-o-min-device-pixel-ratio: 2/1),
+	only screen and (min-device-pixel-ratio: 2),
+	only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (-o-min-device-pixel-ratio: 2/1),
+	only screen and (min-resolution: 192dpi),
+	only screen and (min-resolution: 2dppx) {
+	.woocommerce .product-list .product-list-item {
+		margin: 0px;
+	}
+	.product-list .product-list-row .col-xs-4 {
+		width: 32%;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.page-head {
+		height: auto;
+	}
+
+	.page-head h1 {
+		color: #b89d64;
+		font-size: 2em !important;
+	}
+}
+/* Retina styles here */
