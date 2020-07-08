@@ -10,7 +10,6 @@ module.exports = {
   //   mode: 'production',  // создавать в продакшен
   entry: {
     main: './index.js',
-    test: './test.js',
   }, // указываеться точка входа может быть несколько
   // настройки
   output: {

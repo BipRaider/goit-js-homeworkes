@@ -1,0 +1,63 @@
+@import '../../node_modules/@pnotify/core/dist/PNotify.css';
+@import '../../node_modules/@pnotify/core/dist/BrightTheme.css';
+@import '../../node_modules/@pnotify/core/dist/Material.css';
+.card,
+.js-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 320px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: rgb(203, 212, 230);
+}
+
+.data_input {
+  width: 80%;
+  height: 50px;
+}
+.name_country {
+  font-size: 3em;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.card_country {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 260px;
+}
+.country__data {
+  display: flex;
+  flex-direction: column;
+  padding-right: 20px;
+}
+.card--text {
+  font-size: 1.5em;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.country_list {
+  display: flex;
+  flex-flow: column wrap;
+}
+.languages_list {
+}
+.languages-item {
+  font-size: 1.3em;
+  list-style: none;
+}
+.country-img_flag {
+  max-width: 300px;
+  height: auto;
+}
+.container {
+  text-align: center;
+  margin-top: 2rem;
+
+  font-family: sans-serif;
+}
