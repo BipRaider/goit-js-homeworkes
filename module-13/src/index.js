@@ -5,7 +5,9 @@ import './index.html';
 import './scss/main.scss';
 //--plugins
 import { success, error, defaults, Stack } from '@pnotify/core';
+const myPnotyf = require('./js/MyPnotyf');
 const _ = require('../node_modules/lodash');
+// _.debounce(() => {}, 500);
 //work files template
 import listCard from './templates/list_country.hbs';
 import cardImg from './templates/cardImg.hbs';
@@ -14,8 +16,14 @@ import refs from './js/refs.js';
 const elements = require('./js/addElemenHTMLt');
 const { FindImg } = require('./js/server.js');
 // ------------------start job---------------
+refs.options = {
+	key: `17407415-67eb64dc8eab8b8e81d6a0407`,
+	page: 1,
+	amountElements: 12,
+	cardImg,
+	listCard
+};
+const t = new FindImg(refs);
 
 refs.body.insertAdjacentHTML('afterbegin', elements.form);
-// new FindImg(API_KAY);
-
-const addImg = new FindImg(refs, cardImg, listCard);
+refs.body.children.queryForm.addEventListener('input', (e) => _.debounce(t.formSubmitHandler(e), 500));
