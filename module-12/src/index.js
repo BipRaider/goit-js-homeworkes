@@ -27,88 +27,88 @@ const _ = require('../node_modules/lodash'); //подсоединили библ
 //https://www.jqueryscript.net/other/JS-Notification-Plugin-For-Bootstrap-jQuery-UI-Pines-Notify.html
 // --------------------
 
-input.addEventListener('input', e => dataCountry(e));
+input.addEventListener('input', (e) => _.debounce(dataCountry(e), 500));
 
-const dataCountry = _.debounce(function (e) {
-  //e.preventDefault();
-  e.stopPropagation();
-  const eve = e.target;
+const dataCountry = function(e) {
+	//e.preventDefault();
+	e.stopPropagation();
+	const eve = e.target;
 
-  fetch(`https://restcountries.eu/rest/v2/name/${eve.value}`, {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-    },
-  })
-    .then(response => {
-      if (eve.nextSibling.nextElementSibling) {
-        eve.nextSibling.nextElementSibling.remove();
-      }
-      if (!response.ok) {
-        myPnotify(0);
-        return;
-      }
-      return response.json();
-    })
-    .then(data => {
-      if (data.length > 1) {
-        addItems(assemblyLi(data));
-        return;
-      }
+	fetch(`https://restcountries.eu/rest/v2/name/${eve.value}`, {
+		method: 'GET',
+		headers: {
+			Accept: 'application/json'
+		}
+	})
+		.then((response) => {
+			if (eve.nextSibling.nextElementSibling) {
+				eve.nextSibling.nextElementSibling.remove();
+			}
+			if (!response.ok) {
+				myPnotify(0);
+				return;
+			}
+			return response.json();
+		})
+		.then((data) => {
+			if (data.length > 1) {
+				addItems(assemblyLi(data));
+				return;
+			}
 
-      addItems(assemblyCountry(data));
-    })
-    .catch(() => {
-      addItems(templateError());
-    });
-}, 500);
-
-const addItems = item => {
-  card.insertAdjacentHTML('beforeend', item);
+			addItems(assemblyCountry(data));
+		})
+		.catch(() => {
+			addItems(templateError());
+		});
 };
 
-const assemblyCountry = data => {
-  myPnotify();
-  return data.map(data => createTemplateCountry(data));
+const addItems = (item) => {
+	card.insertAdjacentHTML('beforeend', item);
 };
 
-const assemblyLi = data => {
-  myPnotify();
-  return createTemplateLi({ name: data.map(({ name }) => name) });
+const assemblyCountry = (data) => {
+	myPnotify();
+	return data.map((data) => createTemplateCountry(data));
 };
 
-const createTemplateCountry = items => {
-  return cardCountry(items);
-};
-const createTemplateLi = items => {
-  return listCountry(items);
+const assemblyLi = (data) => {
+	myPnotify();
+	return createTemplateLi({ name: data.map(({ name }) => name) });
 };
 
-const myPnotify = a => {
-  const myStackSuccess = new Stack({
-    dir1: 'down',
-    dir2: 'right',
-    firstpos1: 25,
-    firstpos2: 125,
-  });
-  const myStackError = new Stack({
-    dir1: 'down',
-    dir2: 'left',
-    firstpos1: 25,
-    firstpos2: 125,
-  });
-  if (a === 0) {
-    return error({
-      title: 'Не найдено',
-      text: 'Что-то пошло не так и страна не найдена',
-      delay: 1000,
-      stack: myStackError,
-    });
-  }
-  return success({
-    title: 'Найдено',
-    text: 'Найдена одна страна по вашему запросу  ',
-    delay: 1000,
-    stack: myStackSuccess,
-  });
+const createTemplateCountry = (items) => {
+	return cardCountry(items);
+};
+const createTemplateLi = (items) => {
+	return listCountry(items);
+};
+
+const myPnotify = (a) => {
+	const myStackSuccess = new Stack({
+		dir1: 'down',
+		dir2: 'right',
+		firstpos1: 25,
+		firstpos2: 125
+	});
+	const myStackError = new Stack({
+		dir1: 'down',
+		dir2: 'left',
+		firstpos1: 25,
+		firstpos2: 125
+	});
+	if (a === 0) {
+		return error({
+			title: 'Не найдено',
+			text: 'Что-то пошло не так и страна не найдена',
+			delay: 1000,
+			stack: myStackError
+		});
+	}
+	return success({
+		title: 'Найдено',
+		text: 'Найдена одна страна по вашему запросу  ',
+		delay: 1000,
+		stack: myStackSuccess
+	});
 };
