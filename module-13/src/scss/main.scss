@@ -1,3 +1,16 @@
 @import '../../node_modules/@pnotify/core/dist/PNotify.css';
 @import '../../node_modules/@pnotify/core/dist/BrightTheme.css';
 @import '../../node_modules/@pnotify/core/dist/Material.css';
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.but {
+	display: flex;
+	justify-content: space-evenly;
+	position: fixed;
+	width: 300px;
+	top: 50px;
+}

@@ -18,12 +18,40 @@ const { FindImg } = require('./js/server.js');
 // ------------------start job---------------
 refs.options = {
 	key: `17407415-67eb64dc8eab8b8e81d6a0407`,
-	page: 1,
 	amountElements: 12,
 	cardImg,
 	listCard
 };
+
 const t = new FindImg(refs);
 
 refs.body.insertAdjacentHTML('afterbegin', elements.form);
-refs.body.children.queryForm.addEventListener('input', (e) => _.debounce(t.formSubmitHandler(e), 500));
+refs.body.children.queryForm.addEventListener('input', _.debounce((e) => t.formSubmitHandler(e), 1000));
+refs.but.addEventListener('click', (e) => t.addElem());
+refs.top.addEventListener('click', (e) =>
+	window.scrollTo({
+		top: 0,
+		behavior: 'smooth'
+	})
+);
+refs.down.addEventListener('click', (e) => window.scrollTo(0, window.pageYOffset + window.innerHeight));
+
+// Test
+// const formSubmitHandler = (e) => {
+// 	e.preventDefault();
+// 	e.stopPropagation();
+
+// 	const name = e.target.form.query.value;
+// 	t.searchQuery = name;
+// 	t.request(name).then((value) => {
+// 		t.counterPage();
+// 		if (t._counter > 2) {
+// 			t.addListOnElement(t.imgPush(value));
+// 			return;
+// 		}
+// 		t.addElementOnPage(refs.body, t.listPush(value));
+// 	});
+// };
+
+// document.body.style.overflow = 'hidden'; // запрет на прокрутку
+//https://learn.javascript.ru/metrics-window#page-scroll
