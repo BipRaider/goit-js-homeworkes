@@ -34,6 +34,7 @@
     "webpack-md5-hash": "0.0.6"
   },
   "dependencies": {
+    "basiclightbox": "^5.0.3",
     "handlebars": "^4.7.6",
     "handlebars-loader": "^1.7.1",
     "lodash": "^4.17.15",
