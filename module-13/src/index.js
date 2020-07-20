@@ -22,35 +22,30 @@ const { FindImg } = require('./js/server.js');
 // instance.show();
 
 // настройки scrolls
-refs.top.addEventListener('click', e =>
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  }),
+refs.top.addEventListener('click', (e) =>
+	window.scrollTo({
+		top: 0,
+		behavior: 'smooth'
+	})
 );
-refs.down.addEventListener('click', e =>
-  window.scrollTo(0, window.pageYOffset + window.innerHeight),
-);
+refs.down.addEventListener('click', (e) => window.scrollTo(0, window.pageYOffset + window.innerHeight));
 //---------------добавил элемент на страницу----------------
 refs.body.insertAdjacentHTML('afterbegin', elements.form);
 //----------------------------
 //-----------------------Работа через класс----------------------
 refs.options = {
-  key: `17407415-67eb64dc8eab8b8e81d6a0407`,
-  amountElements: 12,
-  cardImg,
-  listCard,
+	key: `17407415-67eb64dc8eab8b8e81d6a0407`,
+	amountElements: 12,
+	cardImg,
+	listCard
 };
 
 const t = new FindImg(refs);
 
-refs.body.children.queryForm.addEventListener(
-  'input',
-  _.debounce(e => t.formSubmitHandler(e), 1000),
-);
-refs.but.addEventListener('click', e => t.addElem());
+refs.body.children.queryForm.addEventListener('input', _.debounce((e) => t.formSubmitHandler(e), 1000));
+refs.but.addEventListener('click', (e) => t.deletedElements());
 
-///
+/// ===-------------------------------
 
 //===========================Переделка====================================
 // MyNewFetch.constructor(refs);

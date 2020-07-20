@@ -11,7 +11,6 @@ const onEntry = (entries) => {
 
 		if (!elem.isIntersecting) {
 			elem.target.style.backgroundColor = 'red';
-
 			navLink.style.backgroundColor = 'red';
 		}
 
@@ -26,11 +25,6 @@ const options = {
 	threshold: 0.7,
 	rootMargin: '0px 0px 0px 0px'
 };
-// new IntersectionObserver - функция следит за всеми указаными элементами
-//и когда они в ходят в на странице в пределы видимсти возвращает target на тот элемент закоторым надо было следить
-// первый параметр передаёться callback функция
-// вторым пораметром
-//https://developer.mozilla.org/ru/docs/Web/API/IntersectionObserver
 const observer = new IntersectionObserver(onEntry, options);
 const sections = document.querySelectorAll('section');
 
@@ -38,15 +32,18 @@ const sections = document.querySelectorAll('section');
 sections.forEach((elem) => {
 	observer.observe(elem);
 });
+// new IntersectionObserver - функция следит за всеми указаными элементами
+//и когда они в ходят в на странице в пределы видимсти возвращает target на тот элемент закоторым надо было следить
+// первый параметр передаёться callback функция
+// вторым пораметром
+//https://developer.mozilla.org/ru/docs/Web/API/IntersectionObserver
+
 // observer для картинок
 const lazyLoad = (target) => {
 	const imgOptions = {
 		rootMargin: '120px',
 		threshold: 0.01
 	};
-	// const imgOnEntry = (entries) => {
-	// 	entries.forEach((elem) => {});
-	// };
 	const imgObserver = new IntersectionObserver((entries, obserevr) => {
 		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
