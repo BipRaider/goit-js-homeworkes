@@ -1,5 +1,5 @@
 // //--plugins
-
+const _ = require('../../node_modules/lodash'); // _.debounce(() => {}, 500);
 const { myPnotify } = require('./MyPnotyf');
 const { MyObs } = require('./servers/observer');
 
@@ -54,6 +54,7 @@ class FindImg {
 			if (this._body.children.listCard !== undefined) {
 				this.deletedElements();
 				this.addListOnElement(this.imgPush(value));
+				this.addObServer();
 				return;
 			}
 			this.addElementOnPage(this._body, this.listPush(value));
@@ -64,18 +65,14 @@ class FindImg {
 		elem.insertAdjacentHTML('beforeend', items);
 		MyObs.obsImg('.card__img');
 		this.addObServer();
-		// console.log(elem.children.listCard);  //TO DO
 	}
-
 	// Добавление Элемента по клику на кнопку
 	addElem() {
 		this.counterPage();
-
 		if (this._name === '') {
 			myPnotify(0);
 			return;
 		}
-		myPnotify(this._counter);
 
 		this.request(this._name).then((value) => {
 			this.addListOnElement(this.imgPush(value));
@@ -84,7 +81,6 @@ class FindImg {
 
 	//добавит лишки
 	addListOnElement(items) {
-		//console.dir(this._body.children.listCard);
 		this._body.children.listCard.insertAdjacentHTML('beforeend', items);
 		MyObs.obsImg('.card__img');
 	}
@@ -115,23 +111,20 @@ class FindImg {
 	set searchQuery(str) {
 		this._name = str;
 	}
+
 	addObServer() {
 		let observer = new IntersectionObserver(
 			(entries, observer) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
 						this.addElem();
-						console.dir(observer);
 					}
-					if (observer.trackVisibility) {
-						console.log('sssss');
-					}
-
-					observer.unobserve(entry.target);
+					observer.unobserve(entry.target); // останавливаем слежку за элементом
 					observer.observe(this._body.children.listCard.lastElementChild); // вешаем новую прослушку на последний элемент
 				});
 			},
 			{
+				rootMargin: '150px',
 				threshold: 1
 			}
 		);

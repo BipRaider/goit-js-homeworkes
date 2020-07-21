@@ -18,8 +18,6 @@ import refs from './js/refs.js';
 const elements = require('./js/addElemenHTMLt');
 const { FindImg } = require('./js/server.js');
 // ------------------start job---------------
-// const instance = basicLightbox.create(`<div class="modal"></div>`);
-// instance.show();
 
 // настройки scrolls
 refs.top.addEventListener('click', (e) =>
@@ -45,31 +43,29 @@ const t = new FindImg(refs);
 refs.body.children.queryForm.addEventListener('input', _.debounce((e) => t.formSubmitHandler(e), 1000));
 refs.but.addEventListener('click', (e) => t.deletedElements());
 
-/// ===-------------------------------
+// ------------------
+//https://learn.javascript.ru/basic-dom-node-properties
+EventCardImg();
 
-//===========================Переделка====================================
-// MyNewFetch.constructor(refs);
-
-// console.dir(MyNewFetch);
-// //==============
-
-// console.dir(MyQueryFetch);
-
-// const formSubmitHandler = e => {
-//   e.preventDefault();
-//   e.stopPropagation();
-
-//   const name = e.target.form.query.value;
-//   t.searchQuery = name;
-//   t.request(name).then(value => {
-//     t.counterPage();
-//     if (t._counter > 2) {
-//       t.addListOnElement(t.imgPush(value));
-//       return;
-//     }
-//     t.addElementOnPage(refs.body, t.listPush(value));
-//   });
-// };
+function EventCardImg() {
+	refs.body.addEventListener('click', (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		if (e.target.className === 'card__img') {
+			const fullImgSrc = e.target.parentElement.href;
+			const imgSrc = e.target;
+			imgSrc.src = fullImgSrc;
+			instanceElement(imgSrc.outerHTML, imgSrc);
+		}
+		if (e.target.className === 'basicLightbox basicLightbox--img') {
+		}
+	});
+}
+function instanceElement(params, elem) {
+	const instance = basicLightbox.create(`${params}`);
+	elem.src = elem.dataset.img;
+	instance.show();
+}
 
 // document.body.style.overflow = 'hidden'; // запрет на прокрутку
 //https://learn.javascript.ru/metrics-window#page-scroll
