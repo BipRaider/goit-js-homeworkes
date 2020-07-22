@@ -5,7 +5,7 @@
 //https://developer.mozilla.org/ru/docs/Web/API/Intersection_Observer_API
 //https://habr.com/ru/post/494670/
 
-const MyObs = {
+const obSrvererImg = {
 	imgOptions: {
 		rootMargin: '50px', // сдвиг области видимости элемента
 		threshold: 0.4 // на сколько должен войти элемент в экране 0-1
@@ -14,6 +14,7 @@ const MyObs = {
 	obsImg(target) {
 		const images = document.querySelectorAll(target).forEach((elem) => this.imgLoad(elem));
 	},
+
 	elemEntry(entries, obs) {
 		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
@@ -32,5 +33,5 @@ const MyObs = {
 };
 
 module.exports = {
-	MyObs
+	obSrvererImg
 };
