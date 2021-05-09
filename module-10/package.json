@@ -35,7 +35,7 @@
     "webpack-md5-hash": "0.0.6"
   },
   "dependencies": {
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.1",
     "shortid": "^2.2.15"
   }
